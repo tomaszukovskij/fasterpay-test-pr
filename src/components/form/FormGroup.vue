@@ -153,7 +153,8 @@ export default {
       this.addFormValue(value, this.field);
     },
     amount(value) {
-      value > 0 ? this.addFormValue(value, this.field) : "";
+      value === "" ? (value = 0) : "";
+      this.addFormValue(value, this.field);
     },
     // check for input error
     errorStatus(value) {
@@ -203,7 +204,7 @@ export default {
     // Validate input on blur. Validate by type.
     validate(type) {
       if (type === "vModel") {
-        if (this.vModel === "" || this.vModel === "0") {
+        if (this.vModel === "" || this.vModel === 0) {
           this.validateInput = "invalid";
         } else {
           this.validateInput = "valid";

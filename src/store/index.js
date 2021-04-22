@@ -30,7 +30,7 @@ export default createStore({
     paymentMethods: "",
     paymentMethodSelected: "",
     form: {
-      amount: "",
+      amount: 0,
       cardHolderName: "",
       cardNumber: "",
       cardMonth: "",
@@ -53,7 +53,7 @@ export default createStore({
     },
     resetForm(state) {
       state.form = {
-        amount: "",
+        amount: 0,
         cardHolderName: "",
         cardNumber: "",
         cardMonth: "",
@@ -107,7 +107,7 @@ export default createStore({
     isFieldsEmpty: (state) => {
       let fieldsList = [];
       for (let [key, value] of Object.entries(state.form)) {
-        if (value === "") {
+        if (value === "" || value === 0) {
           key === "cardMonth" || key === "cardyear" ? (key = "expiration") : "";
           fieldsList.push(key);
         }
